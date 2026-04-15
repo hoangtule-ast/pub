@@ -222,6 +222,7 @@ function attachAutocomplete(input) {
 
     function select(acc) {
         setInputValue(input, acc.username);
+        onSubmit(acc.username);
         box.style.display = "none";
         currentIndex = -1;
     }
@@ -310,8 +311,30 @@ async function onSubmit2FaDialog(account) {
     submit2FABtn.click();
 }
 
-(async () => {
-    console.log("Start JS");
+(function () {
+    const pushState = history.pushState;
+    const replaceState = history.replaceState;
+
+    function onChange() {
+        //console.log("URL changed:", location.href);
+        init();
+    }
+
+    history.pushState = function (...args) {
+        pushState.apply(this, args);
+        onChange();
+    };
+
+    history.replaceState = function (...args) {
+        replaceState.apply(this, args);
+        onChange();
+    };
+
+    window.addEventListener("popstate", onChange);
+})();
+
+async function init() {
+    console.log("init JS");
     if (!ENV) return;
 
     const usernameInput = await waitForElement('[data-testid="input-username"] input');
@@ -339,5 +362,10 @@ async function onSubmit2FaDialog(account) {
     attachAutocomplete(usernameInput);
 
     const helpText = await waitForElement('[data-testid="help-text"]');
-    helpText.innerHTML += `<span style="background-color:#4da6ff; color:#fff; margin-left:6px; border-radius: 50%; padding: 1px 3px; font-size: 8px;">✔</span>`;
-})();
+    if (helpText && !helpText.dataset?.checked) {
+        helpText.dataset.checked = "true";
+        helpText.innerHTML += `<span style="background-color:#4da6ff; color:#fff; margin-left:6px; border-radius: 50%; padding: 1px 3px; font-size: 8px;">✔</span>`;
+    }
+}
+
+init();
