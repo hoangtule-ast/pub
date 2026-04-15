@@ -311,28 +311,6 @@ async function onSubmit2FaDialog(account) {
     submit2FABtn.click();
 }
 
-(function () {
-    const pushState = history.pushState;
-    const replaceState = history.replaceState;
-
-    function onChange() {
-        //console.log("URL changed:", location.href);
-        init();
-    }
-
-    history.pushState = function (...args) {
-        pushState.apply(this, args);
-        onChange();
-    };
-
-    history.replaceState = function (...args) {
-        replaceState.apply(this, args);
-        onChange();
-    };
-
-    window.addEventListener("popstate", onChange);
-})();
-
 async function init() {
     console.log("init JS");
     if (!ENV) return;
@@ -369,3 +347,34 @@ async function init() {
 }
 
 init();
+
+// (function () {
+//     const pushState = history.pushState;
+//     const replaceState = history.replaceState;
+
+//     function onChange() {
+//         //console.log("URL changed:", location.href);
+//         init();
+//     }
+
+//     history.pushState = function (...args) {
+//         pushState.apply(this, args);
+//         onChange();
+//     };
+
+//     history.replaceState = function (...args) {
+//         replaceState.apply(this, args);
+//         onChange();
+//     };
+
+//     window.addEventListener("popstate", onChange);
+// })();
+
+let lastUrl = location.href;
+setInterval(() => {
+    if (location.href !== lastUrl && [LOCAL, UAT, PROD].map(p => `${p}/core/auth/login`).some(p => location.href.includes(p))) {
+        lastUrl = location.href;
+        console.log("URL changed:", lastUrl);
+        init();
+    }
+}, 300);
