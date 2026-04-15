@@ -317,6 +317,8 @@ function getAccounts() {
     return accounts;
 }
 
+console.log("log");
+
 async function init() {
     console.log("init JS");
     const accounts = getAccounts();
