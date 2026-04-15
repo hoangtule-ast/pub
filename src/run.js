@@ -18,6 +18,7 @@ async function init() {
     const code = await res.text();
 
     const script = document.createElement("script");
+    script.type = "module";
     script.id = SCRIPT_ID;
     script.textContent = code;
 
