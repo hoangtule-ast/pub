@@ -370,11 +370,11 @@ init();
 //     window.addEventListener("popstate", onChange);
 // })();
 
-let lastUrl = location.href;
-setInterval(() => {
-    if (location.href !== lastUrl && [LOCAL, UAT, PROD].map(p => `${p}/core/auth/login`).some(p => location.href.includes(p))) {
-        lastUrl = location.href;
-        console.log("URL changed:", lastUrl);
-        init();
-    }
-}, 300);
+// let lastUrl = location.href;
+// setInterval(() => {
+//     if (location.href !== lastUrl && [LOCAL, UAT, PROD].map(p => `${p}/core/auth/login`).some(p => location.href.includes(p))) {
+//         lastUrl = location.href;
+//         console.log("URL changed:", lastUrl);
+//         init();
+//     }
+// }, 300);

