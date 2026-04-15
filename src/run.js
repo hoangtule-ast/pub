@@ -4,10 +4,12 @@ const PROD = "https://khachsan.ast.com.vn";
 const linkFile = "https://raw.githubusercontent.com/hoangtule-ast/pub/refs/heads/main/src/login.js";
 
 async function init() {
+    console.log("init");
     const SCRIPT_ID = "my-injected-script";
 
     // nếu đã tồn tại thì không chạy nữa
     if (document.getElementById(SCRIPT_ID)) return;
+    console.log("add script",);
 
     const res = await fetch(linkFile);
     const code = await res.text();
@@ -19,8 +21,9 @@ async function init() {
     document.documentElement.appendChild(script);
 }
 
-let lastUrl = location.href;
+let lastUrl = null;
 setInterval(() => {
+    console.log("setInterval:", location.href);
     if (location.href !== lastUrl && [LOCAL, UAT, PROD].map(p => `${p}/core/auth/login`).some(p => location.href.includes(p))) {
         lastUrl = location.href;
         console.log("URL changed:", lastUrl);

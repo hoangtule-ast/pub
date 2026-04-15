@@ -112,8 +112,6 @@ const accountsOpts = {
 const LOCAL = "http://localhost:3500";
 const UAT = "https://uat-hotel.ast.com.vn";
 const PROD = "https://khachsan.ast.com.vn";
-const ENV = window.location.href.includes(LOCAL) ? "LOCAL" : window.location.href.includes(UAT) ? "UAT" : window.location.href.includes(PROD) ? "PROD" : null;
-const accounts = accountsOpts[ENV];
 
 function waitForElement(selector, timeout = 5000) {
     return new Promise((resolve, reject) => {
@@ -154,6 +152,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 function attachAutocomplete(input) {
     let currentIndex = -1;
     let currentList = [];
+    const accounts = getAccounts();
 
     const box = document.createElement("div");
     Object.assign(box.style, {
@@ -279,6 +278,7 @@ function attachAutocomplete(input) {
 
 let lastHandledUsername = null;
 async function onSubmit(username) {
+    const accounts = getAccounts();
     const account = accounts.find(acc => acc.username === (username || "").trim());
 
     const passwordInput = await waitForElement('[data-testid="input-password"] input');
@@ -311,9 +311,16 @@ async function onSubmit2FaDialog(account) {
     submit2FABtn.click();
 }
 
+function getAccounts() {
+    const ENV = window.location.href.includes(LOCAL) ? "LOCAL" : window.location.href.includes(UAT) ? "UAT" : window.location.href.includes(PROD) ? "PROD" : null;
+    const accounts = accountsOpts[ENV];
+    return accounts;
+}
+
 async function init() {
     console.log("init JS");
-    if (!ENV) return;
+    const accounts = getAccounts();
+    if (!accounts?.length) return;
 
     const usernameInput = await waitForElement('[data-testid="input-username"] input');
     if (!usernameInput) return;
@@ -346,7 +353,7 @@ async function init() {
     }
 }
 
-init();
+await init();
 
 // (function () {
 //     const pushState = history.pushState;
