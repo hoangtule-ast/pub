@@ -330,9 +330,6 @@ async function onSubmit2FaDialog(account) {
         await onSubmit2FaDialog(account);
     });
 
-    // await sleep(2000);
-    // setInputValue(usernameInput, "");//clear input
-
     usernameInput.addEventListener("keyup", async (e) => {
         // console.log("keyup: ", e.target.value);
         await onSubmit(e.target.value);
@@ -344,4 +341,7 @@ async function onSubmit2FaDialog(account) {
     });
 
     attachAutocomplete(usernameInput);
+
+    const helpText = await waitForElement('[data-testid="help-text"]');
+    helpText.innerHTML += `<span style="background-color:#4da6ff; color:#fff; margin-left:6px; border-radius: 50%; padding: 1px 3px; font-size: 8px;">✔</span>`;
 })();
