@@ -1,43 +1,123 @@
-const accounts = [
-    {
-        username: "administrator@asttravel.com.vn",
-        password: "y!PRSwqG[NVdH{1(h6L",
-        backupCode: "92XX1AL2, BFUWXLMN, VQMGSKX3, 3ZYDYHTH, V6EP2XEQ, WYZNAHNB, 6X0ST3JM, 4SCSBXAN"
-    },
-    {
-        username: "tuankhaixp258@gmail.com",
-        password: "eCZxzJi+o}h4[@FvI[K",
-        backupCode: "UJC2CUNP, 9GOQC93P, XNO3MFQ4, HKGC8LSV, Z4ZQX0II, HMBFV6A0, 8PMVZTQX, 6F0LYW6Y"
-    },
-    {
-        username: "hoangtu.bookerast@asttravel.com.vn",
-        password: "Ast@575724"
-    },
-    {
-        username: "hoangtu.corpLearWithWorkflow@asttravel.com.vn",
-        password: "Ast@575724"
-    },
-    {
-        username: "hoangtu.corpMemberWithWorkflow@asttravel.com.vn",
-        password: "Ast@575724"
-    },
-    {
-        username: "hoangtu.corpLeadWithoutWorkflow@asttravel.com.vn",
-        password: "Ast@575724"
-    },
-    {
-        username: "hoangtu.corpMemberWithoutWorkflow@asttravel.com.vn",
-        password: "Ast@575724"
-    },
-    {
-        username: "hoangtu.hotel@asttravel.com.vn",
-        password: "Ast@575724"
-    },
-];
+const accountsOpts = {
+    LOCAL: [
+        {
+            username: "administrator@asttravel.com.vn",
+            password: "y!PRSwqG[NVdH{1(h6L",
+            backupCode: "92XX1AL2, BFUWXLMN, VQMGSKX3, 3ZYDYHTH, V6EP2XEQ, WYZNAHNB, 6X0ST3JM, 4SCSBXAN"
+        },
+        {
+            username: "tuankhaixp258@gmail.com",
+            password: "eCZxzJi+o}h4[@FvI[K",
+            backupCode: "UJC2CUNP, 9GOQC93P, XNO3MFQ4, HKGC8LSV, Z4ZQX0II, HMBFV6A0, 8PMVZTQX, 6F0LYW6Y"
+        },
+        {
+            username: "hoangtu.bookerast@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpLearWithWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpMemberWithWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpLeadWithoutWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpMemberWithoutWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.hotel@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+    ],
+    UAT: [
+        {
+            username: "administrator@asttravel.com.vn",
+            password: "y!PRSwqG[NVdH{1(h6L",
+            backupCode: "92XX1AL2, BFUWXLMN, VQMGSKX3, 3ZYDYHTH, V6EP2XEQ, WYZNAHNB, 6X0ST3JM, 4SCSBXAN"
+        },
+        {
+            username: "tuankhaixp258@gmail.com",
+            password: "eCZxzJi+o}h4[@FvI[K",
+            backupCode: "UJC2CUNP, 9GOQC93P, XNO3MFQ4, HKGC8LSV, Z4ZQX0II, HMBFV6A0, 8PMVZTQX, 6F0LYW6Y"
+        },
+        {
+            username: "hoangtu.bookerast@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpLearWithWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpMemberWithWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpLeadWithoutWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpMemberWithoutWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.hotel@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+    ],
+    PROD: [
+        {
+            username: "administrator@asttravel.com.vn",
+            password: "y!PRSwqG[NVdH{1(h6L",
+            backupCode: "92XX1AL2, BFUWXLMN, VQMGSKX3, 3ZYDYHTH, V6EP2XEQ, WYZNAHNB, 6X0ST3JM, 4SCSBXAN"
+        },
+        {
+            username: "tuankhaixp258@gmail.com",
+            password: "eCZxzJi+o}h4[@FvI[K",
+            backupCode: "UJC2CUNP, 9GOQC93P, XNO3MFQ4, HKGC8LSV, Z4ZQX0II, HMBFV6A0, 8PMVZTQX, 6F0LYW6Y"
+        },
+        {
+            username: "hoangtu.bookerast@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpLearWithWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpMemberWithWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpLeadWithoutWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.corpMemberWithoutWorkflow@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu.hotel@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+    ]
+}
+
+const LOCAL = "http://localhost:3500";
+const UAT = "https://uat-hotel.ast.com.vn";
+const PROD = "https://khachsan.ast.com.vn";
+const ENV = window.location.href.includes(LOCAL) ? "LOCAL" : window.location.href.includes(UAT) ? "UAT" : window.location.href.includes(PROD) ? "PROD" : null;
+const accounts = accountsOpts[ENV];
 
 function waitForElement(selector, timeout = 5000) {
     return new Promise((resolve, reject) => {
-        const interval = 100;
+        const interval = 50;
         let elapsed = 0;
 
         const timer = setInterval(() => {
@@ -198,9 +278,7 @@ function attachAutocomplete(input) {
 
 let lastHandledUsername = null;
 async function onSubmit(username) {
-    const value = (username || "").trim();
-
-    const account = accounts.find(acc => acc.username === value);
+    const account = accounts.find(acc => acc.username === (username || "").trim());
 
     // nếu không match → reset trạng thái
     if (!account) {
@@ -222,6 +300,10 @@ async function onSubmit(username) {
 
     loginBtn.click();
 
+    await onSubmit2FaDialog(account);
+}
+
+async function onSubmit2FaDialog(account) {
     if (!account.backupCode) return;
 
     const use2FABtn = await waitForElement('[data-testid="btn-use-code-2fa"]');
@@ -236,24 +318,30 @@ async function onSubmit(username) {
 
 (async () => {
     console.log("Start JS");
+    if (!ENV) return;
 
     const usernameInput = await waitForElement('[data-testid="input-username"] input');
-    if (!usernameInput) {
-        console.log("Element not found");
-        return;
-    }
+    if (!usernameInput) return;
 
-    await sleep(2000);
+    console.log("Adding event listener");
+    const loginBtn = await waitForElement('[data-testid="btn-login"]');
+    loginBtn.addEventListener("click", async (e) => {
+        const account = accounts.find(acc => acc.username === (usernameInput.value || "").trim());
+        await onSubmit2FaDialog(account);
+    });
+
+    // await sleep(2000);
     // setInputValue(usernameInput, "");//clear input
 
-    console.log("Adding usernameInput event listener");
-    attachAutocomplete(usernameInput);
-
-    usernameInput.addEventListener("input", async (e) => {
+    usernameInput.addEventListener("keyup", async (e) => {
+        // console.log("keyup: ", e.target.value);
         await onSubmit(e.target.value);
     });
 
     usernameInput.addEventListener("dblclick", async (e) => {
+        // console.log("dblclick: ", e.target.value);
         await onSubmit(e.target.value);
     });
+
+    attachAutocomplete(usernameInput);
 })();
