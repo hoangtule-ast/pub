@@ -8,8 +8,11 @@ async function init() {
     const SCRIPT_ID = "my-injected-script";
 
     // nếu đã tồn tại thì không chạy nữa
-    if (document.getElementById(SCRIPT_ID)) return;
-    console.log("add script",);
+    if (document.getElementById(SCRIPT_ID)) {
+        console.log("đã có script");
+        return;
+    };
+    console.log("add script");
 
     const res = await fetch(linkFile);
     const code = await res.text();
@@ -23,10 +26,9 @@ async function init() {
 
 let lastUrl = null;
 setInterval(() => {
-    console.log("setInterval:", location.href);
+    console.log("setInterval:");
     if (location.href !== lastUrl && [LOCAL, UAT, PROD].map(p => `${p}/core/auth/login`).some(p => location.href.includes(p))) {
         lastUrl = location.href;
-        console.log("URL changed:", lastUrl);
         init();
     }
 }, 300);
