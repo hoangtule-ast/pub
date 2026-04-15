@@ -16,11 +16,12 @@ async function init() {
 
     const res = await fetch(linkFile);
     const code = await res.text();
+    const wrappedCode = `(async () => { ${code} })().catch(console.error);`;
 
     const script = document.createElement("script");
     script.type = "module";
     script.id = SCRIPT_ID;
-    script.textContent = code;
+    script.textContent = wrappedCode;
 
     document.documentElement.appendChild(script);
 }
