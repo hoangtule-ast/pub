@@ -280,23 +280,12 @@ let lastHandledUsername = null;
 async function onSubmit(username) {
     const account = accounts.find(acc => acc.username === (username || "").trim());
 
-    // nếu không match → reset trạng thái
-    if (!account) {
-        lastHandledUsername = null;
-        return;
-    }
-
-    // nếu đã xử lý username này rồi → bỏ qua
-    // if (lastHandledUsername === account.username) return;
-
-    lastHandledUsername = account.username;
-
-    await sleep(100);
-
     const passwordInput = await waitForElement('[data-testid="input-password"] input');
     const loginBtn = await waitForElement('[data-testid="btn-login"]');
 
     setInputValue(passwordInput, account.password);
+
+    await sleep(10);
 
     loginBtn.click();
 
@@ -307,7 +296,12 @@ async function onSubmit2FaDialog(account) {
     if (!account.backupCode) return;
 
     const use2FABtn = await waitForElement('[data-testid="btn-use-code-2fa"]');
-    use2FABtn.click();
+    const dataValue = use2FABtn.getAttribute("data-value");
+    if (dataValue === "use backup code") {
+        await use2FABtn.click();
+
+        await sleep(10);
+    }
 
     const backupCodeInput = await waitForElement('[data-testid="input-code-2fa"] input');
     await setInputValue(backupCodeInput, account.backupCode);
@@ -326,12 +320,14 @@ async function onSubmit2FaDialog(account) {
     console.log("Adding event listener");
     const loginBtn = await waitForElement('[data-testid="btn-login"]');
     loginBtn.addEventListener("click", async (e) => {
+        // console.log("click");
         const account = accounts.find(acc => acc.username === (usernameInput.value || "").trim());
         await onSubmit2FaDialog(account);
     });
 
-    usernameInput.addEventListener("keyup", async (e) => {
-        // console.log("keyup: ", e.target.value);
+    usernameInput.addEventListener("keydown", async (e) => {
+        // console.log("keydown: ", e.target.value);
+        if (!e.inputType) return;
         await onSubmit(e.target.value);
     });
 
