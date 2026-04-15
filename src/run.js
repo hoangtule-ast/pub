@@ -28,7 +28,6 @@ async function init() {
 
 let lastUrl = null;
 setInterval(() => {
-    console.log("setInterval:");
     if (location.href !== lastUrl && [LOCAL, UAT, PROD].map(p => `${p}/core/auth/login`).some(p => location.href.includes(p))) {
         lastUrl = location.href;
         init();
