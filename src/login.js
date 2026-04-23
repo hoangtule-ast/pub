@@ -11,6 +11,22 @@ const accountsOpts = {
             backupCode: "UJC2CUNP, 9GOQC93P, XNO3MFQ4, HKGC8LSV, Z4ZQX0II, HMBFV6A0, 8PMVZTQX, 6F0LYW6Y"
         },
         {
+            username: "trungkien@asttravel.com.vn",
+            password: "Ast@2026"
+        },
+        {
+            username: "thiendinh@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "huynhdinh@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
             username: "hoangtu.bookerast@asttravel.com.vn",
             password: "Ast@575724"
         },
@@ -47,6 +63,22 @@ const accountsOpts = {
             backupCode: "UJC2CUNP, 9GOQC93P, XNO3MFQ4, HKGC8LSV, Z4ZQX0II, HMBFV6A0, 8PMVZTQX, 6F0LYW6Y"
         },
         {
+            username: "trungkien@asttravel.com.vn",
+            password: "Ast@2026"
+        },
+        {
+            username: "thiendinh@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "huynhdinh@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
             username: "hoangtu.bookerast@asttravel.com.vn",
             password: "Ast@575724"
         },
@@ -81,6 +113,22 @@ const accountsOpts = {
             username: "tuankhaixp258@gmail.com",
             password: "eCZxzJi+o}h4[@FvI[K",
             backupCode: "UJC2CUNP, 9GOQC93P, XNO3MFQ4, HKGC8LSV, Z4ZQX0II, HMBFV6A0, 8PMVZTQX, 6F0LYW6Y"
+        },
+        {
+            username: "trungkien@asttravel.com.vn",
+            password: "Ast@2026"
+        },
+        {
+            username: "thiendinh@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "huynhdinh@asttravel.com.vn",
+            password: "Ast@575724"
+        },
+        {
+            username: "hoangtu@asttravel.com.vn",
+            password: "Ast@575724"
         },
         {
             username: "hoangtu.bookerast@asttravel.com.vn",
