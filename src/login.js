@@ -288,6 +288,7 @@ function attachAutocomplete(input) {
         currentIndex = -1;
         render(accounts);
 
+        console.log('%cThis text is press esc!', 'color: orange;',)
         document.dispatchEvent(
             new KeyboardEvent("keydown", {
                 key: "Escape",
