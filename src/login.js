@@ -199,7 +199,10 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-function attachAutocomplete(input) {
+async function attachAutocomplete() {
+    const input = await waitForElement('[data-testid="input-username"] input');
+    if (!input) return;
+
     let currentIndex = -1;
     let currentList = [];
     const accounts = getAccounts();
@@ -412,7 +415,7 @@ async function init() {
         await onSubmit(e.target.value);
     });
 
-    attachAutocomplete(usernameInput);
+    await attachAutocomplete();
 
     const helpText = await waitForElement('[data-testid="help-text"]');
     if (helpText && !helpText.dataset?.checked) {
