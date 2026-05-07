@@ -287,6 +287,16 @@ function attachAutocomplete(input) {
     input.addEventListener("focus", () => {
         currentIndex = -1;
         render(accounts);
+
+        document.dispatchEvent(
+            new KeyboardEvent("keydown", {
+                key: "Escape",
+                code: "Escape",
+                keyCode: 27,
+                which: 27,
+                bubbles: true
+            })
+        );
     });
 
     // input → filter
@@ -326,7 +336,6 @@ function attachAutocomplete(input) {
     });
 }
 
-let lastHandledUsername = null;
 async function onSubmit(username) {
     const accounts = getAccounts();
     const account = accounts.find(acc => acc.username === (username || "").trim());
@@ -366,8 +375,6 @@ function getAccounts() {
     const accounts = accountsOpts[ENV];
     return accounts;
 }
-
-console.log("log");
 
 async function init() {
     console.log("init JS");
