@@ -199,25 +199,6 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-function pressEsc(input) {
-    document.dispatchEvent(
-        new KeyboardEvent("keydown", {
-            key: "Escape",
-            code: "Escape",
-            keyCode: 27,
-            which: 27,
-            bubbles: true
-        })
-    );
-
-    input.dispatchEvent(
-        new KeyboardEvent("keydown", {
-            key: "Escape",
-            bubbles: true
-        })
-    );
-}
-
 function attachAutocomplete(input) {
     let currentIndex = -1;
     let currentList = [];
@@ -307,15 +288,11 @@ function attachAutocomplete(input) {
         currentIndex = -1;
         render(accounts);
 
-        console.log('%cThis text is press esc!', 'color: orange;',)
+        document.activeElement?.blur();
         await sleep(500);
-        pressEsc(input);
+        document.activeElement?.blur();
 
-        await sleep(1000);
-        pressEsc(input);
 
-        await sleep(2000);
-        pressEsc(input);
     });
 
     // input → filter
