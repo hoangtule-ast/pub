@@ -289,12 +289,20 @@ function attachAutocomplete(input) {
         render(accounts);
 
         console.log('%cThis text is press esc!', 'color: orange;',)
+        await sleep(500);
         document.dispatchEvent(
             new KeyboardEvent("keydown", {
                 key: "Escape",
                 code: "Escape",
                 keyCode: 27,
                 which: 27,
+                bubbles: true
+            })
+        );
+
+        input.dispatchEvent(
+            new KeyboardEvent("keydown", {
+                key: "Escape",
                 bubbles: true
             })
         );
