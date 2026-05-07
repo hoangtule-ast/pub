@@ -245,12 +245,15 @@ function attachAutocomplete(input) {
         box.style.visibility = "hidden";
 
         const boxHeight = box.offsetHeight;
-        let top = rect.top + window.scrollY - boxHeight;
-        if (top < 0) top = rect.bottom + window.scrollY;
-        box.style.top = top - 5 + "px";
+        //render trên
+        // let top = rect.top + window.scrollY - boxHeight;
+        //nếu dài quá render dưới
+        // if (top < 0) top = rect.bottom + window.scrollY;
+        // box.style.top = top - 5 + "px";
 
-        // const top = rect.bottom + window.scrollY;
-        // box.style.top = top + "px";
+        //render dưới
+        const top = rect.bottom + window.scrollY;
+        box.style.top = top + "px";
 
         box.style.left = rect.left + window.scrollX + "px";
         box.style.width = rect.width + "px";
